@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import uuid from "uuid/v4";
 import "./NewBoxForm.css";
 
 class NewBoxForm extends Component {
@@ -15,8 +14,9 @@ class NewBoxForm extends Component {
     }
 
     handleSubmit(evt){
+        console.log("WHAT IS THIS???", this)
         evt.preventDefault();
-        this.props.addBox(this.state);
+        this.props.getNewBoxInfo(this.state);
         this.setState({
             height: 0,
             width: 0,
@@ -33,14 +33,15 @@ class NewBoxForm extends Component {
     render() {
         return (
             <form className="NewBoxForm" onSubmit={ this.handleSubmit }>
-                <label forHTML="height">Height:</label>
+                <label htmlFor="height">Height:</label>
                 <input name="height" value={ this.state.height } onChange={ this.handleChange }></input>
                 
-                <label forHTML="width">Width:</label>
+                <label htmlFor="width">Width:</label>
                 <input name="width" value={ this.state.width } onChange={ this.handleChange }></input>
 
-                <label forHTML="bgColor">Background Color:</label>
+                <label htmlFor="bgColor">Background Color:</label>
                 <input name="bgColor" value={ this.state.bgColor } onChange={ this.handleChange }></input>
+                <button>Make Button!</button>
             </form>
         );
     }
